@@ -63,7 +63,12 @@ export function Dashboard() {
       dp.getList("speakers", { pagination: { page: 1, perPage: 1000 }, sort: { field: "id", order: "ASC" }, filter: {} }),
       dp.getList("rooms",    { pagination: { page: 1, perPage: 1000 }, sort: { field: "id", order: "ASC" }, filter: {} }),
     ]).then(([ev, se, sp, ro]) => {
-      setStats({ events: ev.total, sessions: se.total, speakers: sp.total, rooms: ro.total });
+      setStats({
+        events: ev.total ?? 0,
+        sessions: se.total ?? 0,
+        speakers: sp.total ?? 0,
+        rooms: ro.total ?? 0,
+      });
       const now = new Date();
       const sessions = se.data as any[];
       setLive(sessions.filter((s) => new Date(s.startTime) <= now && new Date(s.endTime) >= now));
