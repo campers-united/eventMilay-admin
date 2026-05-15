@@ -1,7 +1,7 @@
 import { Login, LoginForm } from "react-admin";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import BoltIcon from "@mui/icons-material/Bolt";
+import BoltIcon from "@mui/icons-material/OfflineBolt";
 
 const LoginHeader = () => (
   <Box textAlign="center" py={3}>
