@@ -13,7 +13,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
-import EventIcon from "@mui/icons-material/Event";
+import TodayIcon from "@mui/icons-material/Today";
 import PeopleIcon from "@mui/icons-material/People";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import VideoLabelIcon from "@mui/icons-material/VideoLabel";
@@ -94,7 +94,7 @@ export function Dashboard() {
         <>
           <Grid container spacing={2} sx={{ mb: 3 }}>
             {[
-              { icon: <EventIcon fontSize="small" />,       label: "Événements",   value: stats.events,   color: "#7c5cfc" },
+              { icon: <TodayIcon fontSize="small" />,       label: "Événements",   value: stats.events,   color: "#7c5cfc" },
               { icon: <VideoLabelIcon fontSize="small" />,  label: "Sessions",     value: stats.sessions, color: "#f059c8" },
               { icon: <PeopleIcon fontSize="small" />,      label: "Intervenants", value: stats.speakers, color: "#00b4d8" },
               { icon: <MeetingRoomIcon fontSize="small" />, label: "Salles",       value: stats.rooms,    color: "#06d6a0" },
@@ -150,7 +150,7 @@ export function Dashboard() {
               <Card elevation={0} sx={{ border: "1px solid #e0e0e0", borderRadius: 2 }}>
                 <CardContent>
                   <Box display="flex" alignItems="center" gap={1} mb={2}>
-                    <EventIcon sx={{ color: "#7c5cfc" }} />
+                    <TodayIcon sx={{ color: "#7c5cfc" }} />
                     <Typography fontWeight={700}>Prochaines sessions</Typography>
                   </Box>
                   <Divider sx={{ mb: 1 }} />
