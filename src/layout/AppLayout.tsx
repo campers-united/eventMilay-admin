@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
-import BoltIcon from "@mui/icons-material/Bolt";
+import BoltIcon from "@mui/icons-material/OfflineBolt";
 
 const StyledAppBar = styled(MuiAppBar)({
   background: "linear-gradient(90deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
