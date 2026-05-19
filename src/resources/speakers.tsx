@@ -2,15 +2,22 @@ import {
   List, Datagrid, TextField, EditButton, DeleteButton,
   Edit, Create, SimpleForm, TextInput, required, useRecordContext,
 } from "react-admin";
-import { Avatar, Box } from "@mui/material";
 
+/* Avatar component built with Tailwind */
 const AvatarField = () => {
   const record = useRecordContext();
   if (!record) return null;
-  return (
-    <Avatar src={record.photoUrl || ""} alt={record.fullName} sx={{ width: 36, height: 36, fontSize: 14 }}>
-      {record.fullName?.[0]}
-    </Avatar>
+  const initials = record.fullName?.[0]?.toUpperCase() ?? "?";
+  return record.photoUrl ? (
+    <img
+      src={record.photoUrl}
+      alt={record.fullName}
+      className="w-9 h-9 rounded-full object-cover border border-gray-200"
+    />
+  ) : (
+    <span className="w-9 h-9 rounded-full bg-violet-100 text-violet-600 text-sm font-semibold flex items-center justify-center">
+      {initials}
+    </span>
   );
 };
 
@@ -32,12 +39,18 @@ const SpeakerForm = () => (
   <SimpleForm>
     <TextInput source="fullName" label="Nom complet" validate={required()} fullWidth />
     <TextInput source="bio" label="Biographie" multiline rows={4} fullWidth />
-    <TextInput source="photoUrl" label="URL de la photo" fullWidth helperText="Lien direct vers une image (https://...)" />
-    <Box display="flex" gap={2} width="100%">
+    <TextInput
+      source="photoUrl"
+      label="URL de la photo"
+      fullWidth
+      helperText="Lien direct vers une image (https://...)"
+    />
+    {/* Social links in a row */}
+    <div className="flex gap-4 w-full">
       <TextInput source="twitter"  label="Twitter (@handle)" sx={{ flex: 1 }} />
       <TextInput source="linkedin" label="LinkedIn (URL)"    sx={{ flex: 1 }} />
       <TextInput source="website"  label="Site web"          sx={{ flex: 1 }} />
-    </Box>
+    </div>
   </SimpleForm>
 );
 

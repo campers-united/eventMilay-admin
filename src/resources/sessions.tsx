@@ -5,8 +5,8 @@ import {
   ReferenceArrayInput, AutocompleteArrayInput,
   required, useRecordContext,
 } from "react-admin";
-import { Chip, Box } from "@mui/material";
 
+/* LIVE badge shown inline in the list */
 const LiveChip = () => {
   const record = useRecordContext();
   if (!record) return null;
@@ -14,7 +14,11 @@ const LiveChip = () => {
   const start = new Date(record.startTime);
   const end = new Date(record.endTime);
   if (start <= now && now <= end)
-    return <Chip label="LIVE" size="small" sx={{ background: "#ff4444", color: "#fff", fontWeight: 700, fontSize: 10 }} />;
+    return (
+      <span className="inline-block bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+        LIVE
+      </span>
+    );
   return null;
 };
 
@@ -49,10 +53,11 @@ const SessionForm = () => (
     <ReferenceInput source="roomId" reference="rooms" label="Salle">
       <SelectInput optionText="name" fullWidth />
     </ReferenceInput>
-    <Box display="flex" gap={2} width="100%">
+    {/* Two date-time inputs side by side via Tailwind wrapper */}
+    <div className="flex gap-4 w-full">
       <DateTimeInput source="startTime" label="Heure de début" validate={required()} sx={{ flex: 1 }} />
       <DateTimeInput source="endTime" label="Heure de fin" validate={required()} sx={{ flex: 1 }} />
-    </Box>
+    </div>
     <TextInput source="capacity" label="Capacité (places)" type="number" />
     <ReferenceArrayInput source="speakerIds" reference="speakers" label="Intervenants">
       <AutocompleteArrayInput
