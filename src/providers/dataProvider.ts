@@ -4,12 +4,11 @@ const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const httpClient = (url: string, options: fetchUtils.Options = {}) => {
   const token = localStorage.getItem("admin_token");
-  const headers = new Headers(options.headers);
+  const headers = new Headers(options.headers as HeadersInit);
   if (token) headers.set("Authorization", `Bearer ${token}`);
   return fetchUtils.fetchJson(url, { ...options, headers });
 };
 
-// Map react-admin resource names to backend endpoints
 const resourceMap: Record<string, string> = {
   events:   "events",
   sessions: "sessions",
@@ -23,7 +22,6 @@ function url(resource: string, id?: string | number) {
 }
 
 export const dataProvider: DataProvider = {
-  // GET list — react-admin expects { data: [], total }
   getList: async (resource, params) => {
     const { page, perPage } = params.pagination ?? { page: 1, perPage: 100 };
     const { field, order } = params.sort ?? { field: "id", order: "ASC" };
