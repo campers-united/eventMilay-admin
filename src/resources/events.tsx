@@ -3,20 +3,15 @@ import {
   Edit, Create, SimpleForm, TextInput, DateTimeInput, required,
   Show, SimpleShowLayout, useRecordContext,
 } from "react-admin";
-import { Box } from "@mui/material";
 
+/* Colour swatch shown in the list */
 const CoverColorField = () => {
   const record = useRecordContext();
   if (!record) return null;
   return (
-    <Box
-      sx={{
-        width: 48,
-        height: 24,
-        borderRadius: 1,
-        background: "linear-gradient(135deg, #7c5cfc, #f059c8)",
-        display: "inline-block",
-      }}
+    <span
+      className="inline-block w-12 h-6 rounded"
+      style={{ background: "linear-gradient(135deg, #7c5cfc, #f059c8)" }}
     />
   );
 };
