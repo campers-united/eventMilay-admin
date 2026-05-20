@@ -12,8 +12,10 @@ import { EventList, EventEdit, EventCreate, EventShow } from "./resources/events
 import { SessionList, SessionEdit, SessionCreate } from "./resources/sessions";
 import { SpeakerList, SpeakerEdit, SpeakerCreate } from "./resources/speakers";
 import { RoomList, RoomEdit, RoomCreate } from "./resources/rooms";
+import { UserList, UserCreate, UserEdit } from "./resources/users";
 
 import "./index.css";
+
 /* ─── Inline SVG icons for react-admin Resource ─── */
 const IconEvent = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -36,6 +38,16 @@ const IconRoom = () => (
   </svg>
 );
 
+const IconKey = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/>
+  </svg>
+);
+const IconUserAdmin = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+  </svg>
+);
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Admin
@@ -79,6 +91,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         create={RoomCreate}
         icon={IconRoom}
         options={{ label: "Salles" }}
+      />
+      <Resource
+        name="users"
+        list={UserList}
+        edit={UserEdit}
+        create={UserCreate}
+        icon={IconUserAdmin}
+        options={{ label: "Administrateurs" }}
       />
     </Admin>
   </React.StrictMode>
