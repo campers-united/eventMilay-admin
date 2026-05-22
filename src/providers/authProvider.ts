@@ -4,7 +4,7 @@ const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 export const authProvider: AuthProvider = {
   login: async ({ username, password }) => {
-    const res = await fetch(`${API}/api/auth/login`, {
+    const res = await fetch(`${API}/api/admin/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: username, password }),
@@ -13,8 +13,12 @@ export const authProvider: AuthProvider = {
       const err = await res.json().catch(() => ({}));
       throw new Error(err.error || "Identifiants incorrects");
     }
-    const { token, admin } = await res.json();
-    localStorage.setItem("admin_token", token);
+    const payload = await res.json();
+    // Server currently responds with { message, admin }
+    const admin = payload.admin ?? payload;
+    if (payload.token) {
+      localStorage.setItem("admin_token", payload.token);
+    }
     localStorage.setItem("admin_user", JSON.stringify(admin));
   },
 
@@ -24,16 +28,11 @@ export const authProvider: AuthProvider = {
   },
 
   checkAuth: async () => {
-    const token = localStorage.getItem("admin_token");
-    if (!token) throw new Error("Non authentifié");
-    const res = await fetch(`${API}/api/auth/me`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (!res.ok) {
-      localStorage.removeItem("admin_token");
-      localStorage.removeItem("admin_user");
-      throw new Error("Session expirée");
-    }
+    // The backend currently does not expose /api/auth/me;
+    // consider adding a token-check endpoint. For now, treat
+    // presence of stored `admin_user` as proof of auth.
+    const raw = localStorage.getItem("admin_user");
+    if (!raw) throw new Error("Non authentifié");
   },
 
   checkError: async ({ status }) => {
