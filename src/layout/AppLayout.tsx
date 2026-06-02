@@ -1,6 +1,5 @@
 import { AppBar, AppBarProps, Layout, LayoutProps, UserMenu } from "react-admin";
 
-/* ─── Custom App Bar ─── */
 const CustomAppBar = (props: AppBarProps) => (
   <AppBar
     {...props}
@@ -14,7 +13,6 @@ const CustomAppBar = (props: AppBarProps) => (
       },
     }}
   >
-    {/* Logo & title */}
     <div style={{ display: "flex", alignItems: "center", gap: 8, flex: 1 }}>
       <svg
         width="24"
