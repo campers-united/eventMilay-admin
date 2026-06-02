@@ -60,21 +60,15 @@ const SidebarStyles = () => (
       color: #a688ff !important;
     }
     .RaLayout-appFrame .MuiDrawer-paper .MuiListItemText-primary {
-      color: #e0e0e0 !important;
+      color: #ffffff !important;
       font-size: 0.875rem;
     }
     .RaLayout-appFrame .MuiDrawer-paper .RaMenuItemLink-active {
       background: rgba(124,92,252,0.2) !important;
       border-radius: 8px;
     }
-    .RaLayout-appFrame .MuiDrawer-paper .RaMenuItemLink-active .MuiListItemText-primary {
-      color: #fff !important;
-    }
     .RaLayout-appFrame .MuiDrawer-paper .RaMenuItemLink-active .MuiListItemIcon-root {
       color: #f059c8 !important;
-    }
-    .RaLayout-content {
-      background: #f5f5f5 !important;
     }
   `}</style>
 );
