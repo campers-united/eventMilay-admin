@@ -11,7 +11,6 @@ import { LoginPage } from "./pages/LoginPage";
 import { EventList, EventEdit, EventCreate, EventShow } from "./resources/events";
 import { SessionList, SessionEdit, SessionCreate } from "./resources/sessions";
 import { SpeakerList, SpeakerEdit, SpeakerCreate } from "./resources/speakers";
-import { RoomList, RoomEdit, RoomCreate } from "./resources/rooms";
 import { UserList, UserCreate, UserEdit } from "./resources/users";
 
 import "./index.css";
@@ -83,14 +82,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         create={SpeakerCreate}
         icon={IconPeople}
         options={{ label: "Intervenants" }}
-      />
-      <Resource
-        name="rooms"
-        list={RoomList}
-        edit={RoomEdit}
-        create={RoomCreate}
-        icon={IconRoom}
-        options={{ label: "Salles" }}
       />
       <Resource
         name="users"

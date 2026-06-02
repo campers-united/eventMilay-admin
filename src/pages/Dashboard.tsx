@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Title, useDataProvider } from "react-admin";
 
-interface Stats { events: number; sessions: number; speakers: number; rooms: number; }
+interface Stats { events: number; sessions: number; speakers: number;}
 
 /* ─── SVG Icons ─── */
 const IconCalendar = () => (
@@ -19,11 +19,7 @@ const IconPeople = () => (
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
   </svg>
 );
-const IconRoom = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-  </svg>
-);
+
 const IconRadio = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.4"/>
@@ -36,7 +32,6 @@ const STAT_CONFIGS = [
   { key: "events",   label: "Événements",   icon: <IconCalendar />, color: "#7c5cfc", bg: "rgba(124,92,252,0.12)", border: "rgba(124,92,252,0.25)" },
   { key: "sessions", label: "Sessions",     icon: <IconVideo />,    color: "#f059c8", bg: "rgba(240,89,200,0.12)", border: "rgba(240,89,200,0.25)" },
   { key: "speakers", label: "Intervenants", icon: <IconPeople />,   color: "#0ea5e9", bg: "rgba(14,165,233,0.12)",  border: "rgba(14,165,233,0.25)"  },
-  { key: "rooms",    label: "Salles",       icon: <IconRoom />,     color: "#10b981", bg: "rgba(16,185,129,0.12)", border: "rgba(16,185,129,0.25)" },
 ] as const;
 
 function StatCard({ label, value, icon, color, bg, border }: {
@@ -109,9 +104,8 @@ export function Dashboard() {
       dp.getList("events",   { pagination: { page: 1, perPage: 1000 }, sort: { field: "id", order: "ASC" }, filter: {} }),
       dp.getList("sessions", { pagination: { page: 1, perPage: 1000 }, sort: { field: "startTime", order: "ASC" }, filter: {} }),
       dp.getList("speakers", { pagination: { page: 1, perPage: 1000 }, sort: { field: "id", order: "ASC" }, filter: {} }),
-      dp.getList("rooms",    { pagination: { page: 1, perPage: 1000 }, sort: { field: "id", order: "ASC" }, filter: {} }),
-    ]).then(([ev, se, sp, ro]) => {
-      setStats({ events: ev.total ?? 0, sessions: se.total ?? 0, speakers: sp.total ?? 0, rooms: ro.total ?? 0 });
+    ]).then(([ev, se, sp]) => {
+      setStats({ events: ev.total ?? 0, sessions: se.total ?? 0, speakers: sp.total ?? 0 });
       const now = new Date();
       const sessions = se.data as any[];
       setLive(sessions.filter(s => new Date(s.startTime) <= now && new Date(s.endTime) >= now));
@@ -179,7 +173,7 @@ export function Dashboard() {
                         <div>
                           <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: "#111827" }}>{s.title}</p>
                           <p style={{ margin: 0, fontSize: 11, color: "#9ca3af" }}>
-                            {[s.track, s.room?.name].filter(Boolean).join(" · ")}
+                            {[s.track].filter(Boolean).join(" · ")}
                           </p>
                         </div>
                       </li>
