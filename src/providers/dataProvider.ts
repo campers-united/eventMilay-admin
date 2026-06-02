@@ -13,7 +13,6 @@ const resourceMap: Record<string, string> = {
   events:   "events",
   sessions: "sessions",
   speakers: "speakers",
-  rooms:    "rooms",
 };
 
 function url(resource: string, id?: string | number) {

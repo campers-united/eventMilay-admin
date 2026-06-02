@@ -38,10 +38,10 @@ const EventForm = () => (
     <DateTimeInput source="startDate" label="Date de début" validate={required()} />
     <DateTimeInput source="endDate" label="Date de fin" validate={required()} />
     <TextInput
-      source="coverColor"
-      label="Couleur de couverture"
+      source="coverPicture"
+      label="Image de couverture"
       fullWidth
-      helperText="Ex: from-blue-500 to-purple-600"
+      helperText="URL de l'image de couverture"
     />
   </SimpleForm>
 );
