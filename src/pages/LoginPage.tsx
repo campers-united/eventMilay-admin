@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import { useLogin, useNotify } from "react-admin";
 
-/* ─── SVG Icons ─── */
 const IconMail = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
@@ -34,7 +33,6 @@ const IconRadio = () => (
   </svg>
 );
 
-/* ─── Focus hook ─── */
 function useInputFocus() {
   const ref = useRef<HTMLInputElement>(null);
   const onFocus = () => { if (ref.current) ref.current.style.borderColor = "rgba(99,102,241,0.70)"; };
@@ -42,7 +40,6 @@ function useInputFocus() {
   return { ref, onFocus, onBlur };
 }
 
-/* ─── Styles ─── */
 const T = {
   main: {
     position: "fixed", inset: 0,
@@ -135,9 +132,6 @@ const T = {
   footerLink: { color: "#a5b4fc", textDecoration: "none" } as React.CSSProperties,
 };
 
-/* ═══════════════════════════════════════════════════
-   PAGE DE CONNEXION (seule page — pas d'inscription)
-═══════════════════════════════════════════════════ */
 export const LoginPage = () => {
   const login  = useLogin();
   const notify = useNotify();
@@ -170,7 +164,6 @@ export const LoginPage = () => {
 
       <div style={T.content} className="em-login-grid">
 
-        {/* ── Colonne gauche : branding ── */}
         <section style={T.left} className="em-login-left">
           <div style={T.logo}>
             <div style={T.logoIcon}><IconRadio /></div>
@@ -198,7 +191,6 @@ export const LoginPage = () => {
           </div>
         </section>
 
-        {/* ── Colonne droite : formulaire ── */}
         <section style={{ display: "flex", alignItems: "center" }}>
           <div style={T.card}>
             <h2 style={T.cardTitle}>Connexion Admin</h2>
@@ -207,7 +199,6 @@ export const LoginPage = () => {
             </p>
 
             <form onSubmit={handleSubmit} noValidate>
-              {/* Email */}
               <div style={T.fieldWrap}>
                 <label style={T.label}>Email</label>
                 <div style={T.inputWrap}>
@@ -222,7 +213,6 @@ export const LoginPage = () => {
                 </div>
               </div>
 
-              {/* Mot de passe */}
               <div style={T.fieldWrap}>
                 <div style={T.fieldHeader}>
                   <label style={{ ...T.label, marginBottom: 0 }}>Mot de passe</label>
@@ -246,7 +236,6 @@ export const LoginPage = () => {
                 </div>
               </div>
 
-              {/* Se souvenir de moi */}
               <div style={T.checkRow}>
                 <input type="checkbox" id="remember"
                   style={{ accentColor: "#4f46e5", width: 15, height: 15, cursor: "pointer", flexShrink: 0, marginTop: 1 }} />

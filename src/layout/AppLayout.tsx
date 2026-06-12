@@ -50,7 +50,6 @@ const CustomAppBar = (props: AppBarProps) => (
   </AppBar>
 );
 
-/* ─── Sidebar style injected via a style tag ─── */
 const SidebarStyles = () => (
   <style>{`
     .RaLayout-appFrame .MuiDrawer-paper {

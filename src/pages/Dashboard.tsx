@@ -26,7 +26,6 @@ const IconRadio = () => (
   </svg>
 );
 
-/* ─── Stat Card ─── */
 const STAT_CONFIGS = [
   { key: "events",   label: "Événements",   icon: <IconCalendar />, color: "#7c5cfc", bg: "rgba(124,92,252,0.12)", border: "rgba(124,92,252,0.25)" },
   { key: "sessions", label: "Sessions",     icon: <IconVideo />,    color: "#f059c8", bg: "rgba(240,89,200,0.12)", border: "rgba(240,89,200,0.25)" },
@@ -58,7 +57,6 @@ function StatCard({ label, value, icon, color, bg, border }: {
   );
 }
 
-/* ─── Section card ─── */
 function SectionCard({ title, icon, badge, children }: {
   title: string; icon: React.ReactNode; badge?: number; children: React.ReactNode;
 }) {
@@ -84,14 +82,10 @@ function SectionCard({ title, icon, badge, children }: {
   );
 }
 
-/* ─── Empty state ─── */
 function Empty({ text }: { text: string }) {
   return <p style={{ fontSize: 13, color: "#9ca3af", textAlign: "center", padding: "16px 0", margin: 0 }}>{text}</p>;
 }
 
-/* ═══════════════════════════════════════════════════════
-   DASHBOARD
-═══════════════════════════════════════════════════════ */
 export function Dashboard() {
   const dp = useDataProvider();
   const [stats, setStats]     = useState<Stats | null>(null);
@@ -116,7 +110,6 @@ export function Dashboard() {
     <div style={{ padding: 24, background: "#f9fafb", minHeight: "100vh" }}>
       <Title title="Tableau de bord" />
 
-      {/* Header */}
       <div style={{ marginBottom: 24 }}>
         <h1 style={{ fontSize: 26, fontWeight: 700, color: "#111827", margin: "0 0 4px" }}>
           Tableau de bord
@@ -137,7 +130,6 @@ export function Dashboard() {
         </div>
       ) : (
         <>
-          {/* Stat cards */}
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
@@ -148,10 +140,8 @@ export function Dashboard() {
             ))}
           </div>
 
-          {/* Live + Upcoming */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
 
-            {/* Sessions en direct */}
             <SectionCard
               title="Sessions en direct"
               badge={live.length}
@@ -182,7 +172,6 @@ export function Dashboard() {
               }
             </SectionCard>
 
-            {/* Prochaines sessions */}
             <SectionCard
               title="Prochaines sessions"
               icon={<span style={{ color: "#7c5cfc", display: "flex" }}><IconCalendar /></span>}
