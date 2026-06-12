@@ -13,6 +13,7 @@ const resourceMap: Record<string, string> = {
   events:   "events",
   sessions: "sessions",
   speakers: "speakers",
+  rooms:    "rooms",
 };
 
 function url(resource: string, id?: string | number) {
@@ -51,10 +52,20 @@ export const dataProvider: DataProvider = {
   },
 
   getManyReference: async (resource, params) => {
-    const { target, id } = params;
-    const { json } = await httpClient(`${url(resource)}?${target}=${id}`);
-    const data = Array.isArray(json) ? json : [];
-    return { data, total: data.length };
+    const { target, id, pagination, sort } = params;
+    const { page = 1, perPage = 100 } = pagination ?? {};
+    const { field = "id", order = "ASC" } = sort ?? {};
+    const query = new URLSearchParams({
+      [target]: String(id),
+      _page: String(page),
+      _limit: String(perPage),
+      _sort: field,
+      _order: order,
+    });
+    const { json, headers } = await httpClient(`${url(resource)}?${query}`);
+    const data = Array.isArray(json) ? json : json.data ?? [];
+    const total = Number(headers.get("X-Total-Count") ?? data.length);
+    return { data, total };
   },
 
   create: async (resource, { data }) => {
@@ -80,7 +91,7 @@ export const dataProvider: DataProvider = {
 
   delete: async (resource, { id }) => {
     await httpClient(url(resource, id), { method: "DELETE" });
-    return { data: { id } as { id: string | number } };
+    return { data: { id } } as any;
   },
 
   deleteMany: async (resource, { ids }) => {
