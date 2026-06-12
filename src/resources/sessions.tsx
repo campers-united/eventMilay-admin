@@ -49,7 +49,9 @@ const SessionForm = () => (
     <TextInput source="title" label="Titre" validate={required()} fullWidth />
     <TextInput source="description" label="Description" multiline rows={3} fullWidth />
     <TextInput source="track" label="Track (ex: Backend, Design…)" fullWidth />
-   <TextInput source="roomId" label="Salle" fullWidth />
+   <ReferenceInput source="roomId" reference="rooms" label="Salle">
+      <SelectInput optionText="name" fullWidth />
+    </ReferenceInput>
     <TextInput source="capacity" label="Capacité (places)" type="number" />
     <div className="flex gap-4 w-full">
       <DateTimeInput source="startTime" label="Heure de début" validate={required()} sx={{ flex: 1 }} />
