@@ -14,7 +14,6 @@ export const authProvider: AuthProvider = {
       throw new Error(err.error || "Identifiants incorrects");
     }
     const payload = await res.json();
-    // Server currently responds with { message, admin }
     const admin = payload.admin ?? payload;
     if (payload.token) {
       localStorage.setItem("admin_token", payload.token);
@@ -28,9 +27,6 @@ export const authProvider: AuthProvider = {
   },
 
   checkAuth: async () => {
-    // The backend currently does not expose /api/auth/me;
-    // consider adding a token-check endpoint. For now, treat
-    // presence of stored `admin_user` as proof of auth.
     const raw = localStorage.getItem("admin_user");
     if (!raw) throw new Error("Non authentifié");
   },

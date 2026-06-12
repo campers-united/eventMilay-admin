@@ -14,29 +14,24 @@
 }
 
 @layer components {
-  /* ─── React-Admin overrides ─── */
   .RaLayout-root {
     @apply bg-gray-100;
   }
 
-  /* Sidebar */
   .MuiDrawer-paper {
-    @apply !bg-navy-700;
+    @apply bg-navy-700;
   }
 
-  /* Appbar override – react-admin injects its own MUI appbar; we hide it and use ours */
   .RaAppBar-toolbar {
     @apply hidden;
   }
 
-  /* Form inputs inside react-admin */
   .ra-input input,
   .ra-input textarea,
   .ra-input select {
     @apply border border-gray-300 rounded-lg px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm;
   }
 
-  /* Datagrid */
   .RaDatagrid-root table {
     @apply w-full;
   }
@@ -63,15 +58,12 @@
   }
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(124,92,252,0.4); border-radius: 4px; }
 
-/* Login placeholder */
 .login-input::placeholder { color: #475569 !important; }
 
-/* Pulse keyframe */
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
