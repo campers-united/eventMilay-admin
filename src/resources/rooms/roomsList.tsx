@@ -23,12 +23,6 @@ const RoomForm = () => (
   </SimpleForm>
 );
 
-export const RoomEdit = () => (
-  <Edit title="Modifier la salle">
-    <RoomForm />
-  </Edit>
-);
-
 export const RoomCreate = () => (
   <Create title="Nouvelle salle">
     <RoomForm />
