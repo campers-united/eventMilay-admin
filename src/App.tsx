@@ -1,3 +1,5 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
 import { Admin, Resource } from "react-admin";
 
 import "./index.css";
@@ -40,7 +42,7 @@ const IconUserAdmin = () => (
   </svg>
 );
 
-export default function App() {
+function App() {
   return (
     <Admin
       dataProvider={dataProvider}
@@ -95,3 +97,9 @@ export default function App() {
     </Admin>
   );
 }
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
