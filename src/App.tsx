@@ -14,7 +14,7 @@ import { EventList, EventEdit, EventCreate, EventShow } from "./resources/events
 import { SessionList, SessionEdit, SessionCreate } from "./resources/sessions";
 import { SpeakerList, SpeakerEdit, SpeakerCreate } from "./resources/speakers";
 import { UserList, UserCreate, UserEdit } from "./resources/users";
-import { RoomList, RoomEdit, RoomCreate } from "./resources/rooms/rooms";
+import { RoomList, RoomEdit, RoomCreate } from "./resources/rooms/roomsList";
 
 const IconEvent = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
