@@ -1,17 +1,3 @@
-/**
- * users.tsx
- *
- * Resource react-admin pour la gestion des comptes administrateurs.
- * Seul un admin connecté peut créer / modifier / supprimer des comptes.
- *
- * Endpoints backend attendus :
- *   GET    /api/users          → liste paginée  { data: [], total }  + header X-Total-Count
- *   GET    /api/users/:id      → un utilisateur
- *   POST   /api/users          → créer un compte  { name, email, password, role }
- *   PUT    /api/users/:id      → modifier         { name, email, role }
- *   DELETE /api/users/:id      → supprimer
- */
-
 import {
   List, Datagrid, TextField, DateField, EmailField,
   EditButton, DeleteButton,
@@ -20,7 +6,6 @@ import {
   useRecordContext, useGetIdentity,
 } from "react-admin";
 
-/* ─── Badge rôle ─── */
 const RoleBadge = () => {
   const record = useRecordContext();
   if (!record) return null;
@@ -39,7 +24,6 @@ const RoleBadge = () => {
   );
 };
 
-/* ─── Avatar initiales ─── */
 const AvatarField = () => {
   const record = useRecordContext();
   if (!record) return null;
@@ -57,17 +41,13 @@ const AvatarField = () => {
   );
 };
 
-/* ─── Protection : empêche de supprimer son propre compte ─── */
 const SafeDeleteButton = () => {
   const record   = useRecordContext();
   const { data: identity } = useGetIdentity();
-  if (!record || record.id === identity?.id) return null; // on cache le bouton
+  if (!record || record.id === identity?.id) return null;
   return <DeleteButton />;
 };
 
-/* ═══════════════════════
-   LISTE
-═══════════════════════ */
 export const UserList = () => (
   <List sort={{ field: "createdAt", order: "DESC" }} perPage={25} title="Administrateurs">
     <Datagrid bulkActionButtons={false} rowClick="edit">
@@ -82,9 +62,6 @@ export const UserList = () => (
   </List>
 );
 
-/* ═══════════════════════
-   CRÉATION
-═══════════════════════ */
 export const UserCreate = () => (
   <Create title="Nouveau compte administrateur">
     <SimpleForm>
@@ -123,9 +100,6 @@ export const UserCreate = () => (
   </Create>
 );
 
-/* ═══════════════════════
-   ÉDITION
-═══════════════════════ */
 export const UserEdit = () => (
   <Edit title="Modifier le compte">
     <SimpleForm>
