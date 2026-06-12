@@ -1,20 +1,8 @@
 import {
   List, Datagrid, TextField, DateField, EditButton, DeleteButton,
   Edit, Create, SimpleForm, TextInput, DateTimeInput, required,
-  Show, SimpleShowLayout, useRecordContext,
+  Show, SimpleShowLayout,
 } from "react-admin";
-
-/* Colour swatch shown in the list */
-const CoverColorField = () => {
-  const record = useRecordContext();
-  if (!record) return null;
-  return (
-    <span
-      className="inline-block w-12 h-6 rounded"
-      style={{ background: "linear-gradient(135deg, #7c5cfc, #f059c8)" }}
-    />
-  );
-};
 
 export const EventList = () => (
   <List sort={{ field: "startDate", order: "DESC" }} perPage={25}>
@@ -23,7 +11,6 @@ export const EventList = () => (
       <TextField source="location" label="Lieu" />
       <DateField source="startDate" label="Début" showTime />
       <DateField source="endDate" label="Fin" showTime />
-      <CoverColorField />
       <EditButton />
       <DeleteButton />
     </Datagrid>

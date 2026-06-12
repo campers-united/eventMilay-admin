@@ -3,7 +3,6 @@ import {
   Edit, Create, SimpleForm, TextInput, required, useRecordContext,
 } from "react-admin";
 
-/* Avatar component built with Tailwind */
 const AvatarField = () => {
   const record = useRecordContext();
   if (!record) return null;
@@ -45,7 +44,6 @@ const SpeakerForm = () => (
       fullWidth
       helperText="Lien direct vers une image (https://...)"
     />
-    {/* Social links in a row */}
     <div className="flex gap-4 w-full">
       <TextInput source="twitter"  label="Twitter (@handle)" sx={{ flex: 1 }} />
       <TextInput source="linkedin" label="LinkedIn (URL)"    sx={{ flex: 1 }} />

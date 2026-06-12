@@ -6,7 +6,6 @@ import {
   required, useRecordContext,
 } from "react-admin";
 
-/* LIVE badge shown inline in the list */
 const LiveChip = () => {
   const record = useRecordContext();
   if (!record) return null;
