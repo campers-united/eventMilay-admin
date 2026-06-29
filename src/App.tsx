@@ -13,7 +13,6 @@ import { LoginPage } from "./pages/LoginPage";
 import { EventList, EventEdit, EventCreate, EventShow } from "./resources/events";
 import { SessionList, SessionEdit, SessionCreate } from "./resources/sessions";
 import { SpeakerList, SpeakerEdit, SpeakerCreate, SpeakerShow } from "./resources/speakers";
-import { UserList, UserCreate, UserEdit } from "./resources/users";
 import { RoomList, RoomEdit, RoomCreate } from "./resources/rooms/indexx";
 
 const IconEvent = () => (
