@@ -1,7 +1,9 @@
 import {
   List, Datagrid, TextField, EditButton, DeleteButton,
-  Edit, Create, SimpleForm, TextInput, NumberInput, required,
+  Create,
 } from "react-admin";
+
+import { RoomForm } from "./roomsCreate";
 
 export const RoomList = () => (
   <List sort={{ field: "name", order: "ASC" }} perPage={25}>
@@ -13,14 +15,6 @@ export const RoomList = () => (
       <DeleteButton />
     </Datagrid>
   </List>
-);
-
-const RoomForm = () => (
-  <SimpleForm>
-    <TextInput source="name" label="Nom de la salle" validate={required()} fullWidth />
-    <TextInput source="floor" label="Étage / Localisation" fullWidth />
-    <TextInput source="capacity" label="Capacité (places)" type="number" fullWidth />
-  </SimpleForm>
 );
 
 export const RoomCreate = () => (

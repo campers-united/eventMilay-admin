@@ -1,8 +1,9 @@
 import { Edit } from "react-admin";
 
-import {RoomCreateForm} from "./roomsCreate";
+import { RoomForm } from "./roomsCreate";
+
 export const RoomEdit = () => (
   <Edit title="Modifier la salle">
-    <RoomCreateForm />
+    <RoomForm />
   </Edit>
 );

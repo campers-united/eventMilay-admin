@@ -27,7 +27,7 @@ export const SpeakerList = () => (
     <Datagrid bulkActionButtons={false} rowClick="edit">
       <AvatarField />
       <TextField source="fullName" label="Nom complet" />
-      <TextField source="bio" label="Bio" />
+      <TextField source="bio" label="Bio" maxWidth={200} />
       <TextField source="twitter" label="Twitter" />
       <TextField source="linkedin" label="LinkedIn" />
       <EditButton />

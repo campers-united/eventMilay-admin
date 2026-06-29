@@ -12,11 +12,9 @@ import { LoginPage } from "./pages/LoginPage";
 
 import { EventList, EventEdit, EventCreate, EventShow } from "./resources/events";
 import { SessionList, SessionEdit, SessionCreate } from "./resources/sessions";
-import { SpeakerList, SpeakerEdit, SpeakerCreate } from "./resources/speakers";
+import { SpeakerList, SpeakerEdit, SpeakerCreate, SpeakerShow } from "./resources/speakers";
 import { UserList, UserCreate, UserEdit } from "./resources/users";
-import { RoomList } from "./resources/rooms/roomsList";
-import { RoomEdit } from "./resources/rooms/roomsEdit";
-import { RoomCreateForm } from "./resources/rooms/roomsCreate"; 
+import { RoomList, RoomEdit, RoomCreate } from "./resources/rooms/indexx";
 
 const IconEvent = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -77,6 +75,7 @@ function App() {
         list={SpeakerList}
         edit={SpeakerEdit}
         create={SpeakerCreate}
+        show={SpeakerShow}
         icon={IconPeople}
         options={{ label: "Intervenants" }}
       />
@@ -84,7 +83,7 @@ function App() {
         name="rooms"
         list={RoomList}
         edit={RoomEdit}
-        create={RoomCreateForm}
+        create={RoomCreate}
         icon={IconRoom}
         options={{ label: "Salles" }}
       />
