@@ -1,12 +1,10 @@
 import {
-  List, Datagrid, TextField, DateField, EditButton, DeleteButton,
-  Edit, Create, SimpleForm, TextInput, DateTimeInput, required,
-  Show, SimpleShowLayout,
+  Edit, Create, SimpleForm, TextInput, DateTimeInput, required
 } from "react-admin";
 
 
 
-const EventForm = () => (
+export const EventForm = () => (
   <SimpleForm>
     <TextInput source="title" label="Titre" validate={required()} fullWidth />
     <TextInput source="description" label="Description" multiline rows={3} fullWidth />

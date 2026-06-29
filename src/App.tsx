@@ -9,11 +9,10 @@ import { dataProvider } from "./providers/dataProvider";
 import { AppLayout } from "./layout/AppLayout";
 import { Dashboard as AdminDashboard } from "./pages/Dashboard";
 import { LoginPage } from "./pages/LoginPage";
-
-import { EventList, EventEdit, EventCreate, EventShow } from "./resources/events/events";
+import { EventCreate , EventEdit ,EventList ,EventShow } from "./resources/events";
 import { SessionList, SessionEdit, SessionCreate } from "./resources/sessions";
 import { SpeakerList, SpeakerEdit, SpeakerCreate, SpeakerShow } from "./resources/speakers";
-import { RoomList, RoomEdit, RoomCreate } from "./resources/rooms/indexx";
+import { RoomList, RoomEdit, RoomCreate } from "./resources/rooms";
 
 const IconEvent = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
