@@ -4,7 +4,7 @@ import {
 
 
 
-export const EventForm = () => (
+const EventForm = () => (
   <SimpleForm>
     <TextInput source="title" label="Titre" validate={required()} fullWidth />
     <TextInput source="description" label="Description" multiline rows={3} fullWidth />

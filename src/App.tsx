@@ -10,7 +10,7 @@ import { AppLayout } from "./layout/AppLayout";
 import { Dashboard as AdminDashboard } from "./pages/Dashboard";
 import { LoginPage } from "./pages/LoginPage";
 import { EventCreate , EventEdit ,EventList ,EventShow } from "./resources/events";
-import { SessionList, SessionEdit, SessionCreate } from "./resources/sessions";
+import { SessionList, SessionEdit, SessionCreate } from "./resources/sessions/sessions";
 import { SpeakerList, SpeakerEdit, SpeakerCreate, SpeakerShow } from "./resources/speakers";
 import { RoomList, RoomEdit, RoomCreate } from "./resources/rooms";
 
