@@ -87,14 +87,6 @@ function App() {
         icon={IconRoom}
         options={{ label: "Salles" }}
       />
-      <Resource
-        name="users"
-        list={UserList}
-        edit={UserEdit}
-        create={UserCreate}
-        icon={IconUserAdmin}
-        options={{ label: "Administrateurs" }}
-      />
     </Admin>
   );
 }
